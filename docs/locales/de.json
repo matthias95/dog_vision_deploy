@@ -1,0 +1,67 @@
+{
+  "html": {
+    "title": "Dog Vision - Sehen Sie die Welt durch die Augen Ihres Hundes | Echtzeit-Farbsimulator",
+    "description": "Sehen Sie die Welt durch die Augen Ihres Hundes. Dog Vision nutzt Ihre Kamera, um zu simulieren, wie Hunde Farben wahrnehmen - Blau und Gelb ohne Rot oder Grün.",
+    "heading": "Dog Vision",
+    "humanView": "Menschliche Sicht",
+    "dogView": "Hundesicht",
+    "article": {
+      "heading": "Wie Hunde Farben anders sehen als Menschen",
+      "p1": "Menschen haben trichromatisches Sehen — unsere Augen enthalten drei Arten von Zapfenzellen, die empfindlich für rotes, grünes und blaues Licht sind. Dadurch können wir das volle Farbspektrum wahrnehmen.",
+      "p2": "Hunde haben <strong>dichromatisches Sehen</strong>. Sie haben nur zwei Arten von Zapfenzellen: eine für Blau und eine für Gelb. Das bedeutet, dass Hunde nicht zwischen Rot und Grün unterscheiden können — beide Farben erscheinen als Gelb- oder Grautöne.",
+      "p3": "Dies ist vergleichbar mit <strong>Rot-Grün-Blindheit</strong> beim Menschen. Obwohl Hunde weniger Farben sehen, haben sie ein besseres Nachtsichtvermögen und können Bewegungen besser erkennen, was sie zu ausgezeichneten Jägern machte.",
+      "p4": "Nutzen Sie die Kamera oben, um eine Echtzeit-Simulation zu sehen, wie Ihr Hund die Welt wahrnimmt."
+    },
+    "capturedImage": "Aufgenommenes Bild",
+    "share": "Teilen",
+    "save": "Speichern",
+    "discard": "Verwerfen",
+    "fullscreenAlt": "Vollbild-Vorschau",
+    "footer": "Dog Vision — lehrreiche Demonstration des Farbsehens von Hunden.",
+    "ariaShare": "Teilen",
+    "ariaDownload": "Herunterladen",
+    "ariaDiscard": "Verwerfen"
+  },
+  "dialog": {
+    "prompt": {
+      "title": "Kameraberechtigung erforderlich",
+      "desc": "Diese App nutzt Ihre Kamera, um zu zeigen, wie <strong>Hunde</strong> die Welt sehen. Alles bleibt auf Ihrem Gerät — nichts wird hochgeladen oder aufgezeichnet. Wenn Sie auf <strong>Weiter</strong> tippen, fragt Ihr Browser nach Kamerazugriff."
+    },
+    "denied": {
+      "title": "Kamerazugriff blockiert",
+      "desc": "Diese App benötigt Kamerazugriff, um zu zeigen, wie <strong>Hunde</strong> die Welt sehen. Bitte erlauben Sie den Kamerazugriff für diese Seite in Ihren Browsereinstellungen und laden Sie die Seite neu."
+    },
+    "granted": {
+      "title": "Kamera bereit",
+      "desc": "Tippen Sie auf <strong>Weiter</strong>, um die Kamera zu starten."
+    },
+    "requesting": {
+      "title": "Kameraberechtigung erforderlich",
+      "desc": "Kamera wird angefordert…"
+    },
+    "error": {
+      "title": "Kamera nicht verfügbar"
+    },
+    "continue": "Weiter"
+  },
+  "error": {
+    "notResponding": "Kamera reagiert nicht — sie wird möglicherweise von einer anderen App verwendet. Schließen Sie die andere App und versuchen Sie es erneut.",
+    "inUse": "Kamera wird von einer anderen App verwendet — schließen Sie diese und versuchen Sie es erneut.",
+    "accessDenied": "Kamerazugriff verweigert — überprüfen Sie Ihre Browsereinstellungen und laden Sie die Seite neu.",
+    "notFound": "Keine Kamera auf diesem Gerät gefunden.",
+    "noCamera": "Keine Kamera verfügbar",
+    "streamEnded": "Kamerastream wurde vor der Einrichtung beendet",
+    "noData": "Kamera sendet keine Videodaten",
+    "setupFailed": "Kamera-Einrichtung fehlgeschlagen: "
+  },
+  "capture": {
+    "header": "Wie Hunde die Welt sehen",
+    "humanVision": "MENSCHLICHE SICHT",
+    "dogVision": "HUNDESICHT",
+    "footer": "Erstellt mit ",
+    "imgAlt": "Aufgenommene Tiersicht"
+  },
+  "share": {
+    "title": "Dog Vision"
+  }
+}

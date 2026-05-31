@@ -1,0 +1,67 @@
+{
+  "html": {
+    "title": "Dog Vision - See How Dogs See the World | Real-time Color Simulator",
+    "description": "See the world through your dog's eyes. Dog Vision uses your camera to simulate how dogs perceive colors - blue and yellow with no red or green.",
+    "heading": "Dog Vision",
+    "humanView": "Human view",
+    "dogView": "Dog view",
+    "article": {
+      "heading": "How dogs see color differently from humans",
+      "p1": "Humans have trichromatic vision — our eyes contain three types of cone cells sensitive to red, green, and blue light. This allows us to perceive the full spectrum of colors.",
+      "p2": "Dogs have <strong>dichromatic vision</strong>. They have only two types of cone cells: one sensitive to blue and one sensitive to yellow. This means dogs cannot distinguish between red and green — both colors appear as shades of yellow or gray to them.",
+      "p3": "This is similar to <strong>red-green color blindness</strong> in humans. While dogs see fewer colors, they have superior night vision and better motion detection, which made them excellent hunters.",
+      "p4": "Use the camera above to see a real-time simulation of how your dog perceives the world."
+    },
+    "capturedImage": "Captured Image",
+    "share": "Share",
+    "save": "Save",
+    "discard": "Discard",
+    "fullscreenAlt": "Fullscreen preview",
+    "footer": "Dog Vision — educational demonstration of canine color perception.",
+    "ariaShare": "Share",
+    "ariaDownload": "Download",
+    "ariaDiscard": "Discard"
+  },
+  "dialog": {
+    "prompt": {
+      "title": "Camera permission needed",
+      "desc": "This app uses your camera to show how <strong>dogs</strong> see the world. Everything stays on your device — nothing is uploaded or recorded. When you tap <strong>Continue</strong>, your browser will ask for camera access."
+    },
+    "denied": {
+      "title": "Camera access blocked",
+      "desc": "This app needs camera access to show how <strong>dogs</strong> see the world. Please enable camera access for this site in your browser settings, then reload this page."
+    },
+    "granted": {
+      "title": "Camera ready",
+      "desc": "Tap <strong>Continue</strong> to start the camera."
+    },
+    "requesting": {
+      "title": "Camera permission needed",
+      "desc": "Requesting camera…"
+    },
+    "error": {
+      "title": "Camera unavailable"
+    },
+    "continue": "Continue"
+  },
+  "error": {
+    "notResponding": "Camera is not responding — it may be in use by another app. Close the other app and try again.",
+    "inUse": "Camera is in use by another app — close it and try again.",
+    "accessDenied": "Camera access was denied — check your browser settings and reload.",
+    "notFound": "No camera found on this device.",
+    "noCamera": "No camera available",
+    "streamEnded": "Camera stream ended before setup",
+    "noData": "Camera is not sending video data",
+    "setupFailed": "Camera setup failed: "
+  },
+  "capture": {
+    "header": "How dogs see the world",
+    "humanVision": "HUMAN VISION",
+    "dogVision": "DOG VISION",
+    "footer": "Created with ",
+    "imgAlt": "Captured animal vision"
+  },
+  "share": {
+    "title": "Dog Vision"
+  }
+}
