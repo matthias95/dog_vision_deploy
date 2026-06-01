@@ -28,21 +28,31 @@
 </select>
 
 <main>
-  <div class="container">
-    <div class="panel">
-      <span class="panel-label" data-i18n="html.humanView">Human view</span>
-      <canvas id="canvasHuman"></canvas>
+  <div class="app-area">
+    <div class="container">
+      <div class="panel">
+        <span class="panel-label" data-i18n="html.humanView">Human view</span>
+        <canvas id="canvasHuman"></canvas>
+      </div>
+      <div class="panel">
+        <span class="panel-label" id="animalLabel" data-i18n="html.dogView">Dog view</span>
+        <canvas id="canvasAnimal"></canvas>
+      </div>
     </div>
-    <div class="panel">
-      <span class="panel-label" id="animalLabel" data-i18n="html.dogView">Dog view</span>
-      <canvas id="canvasAnimal"></canvas>
-    </div>
-  </div>
 
-  <div id="controls">
-    <button id="btnCapture" disabled>
-      <span class="paw">🐾</span>
-    </button>
+    <div id="controls">
+      <button id="btnCapture" disabled>
+        <span class="paw">🐾</span>
+      </button>
+    </div>
+
+    <div id="launchOverlay">
+      <div id="launchDialog">
+        <span class="paw-large">🐾</span>
+        <h2 data-i18n="html.launchHeading">Dog Vision</h2>
+        <button id="btnLaunch" data-i18n="html.launchButton">Start Camera</button>
+      </div>
+    </div>
   </div>
 
   <article>
@@ -54,7 +64,7 @@
   </article>
 </main>
 
-<div id="permOverlay">
+<div id="permOverlay" class="hidden">
   <div id="permDialog">
     <h2 id="permTitle">Camera permission needed</h2>
     <p id="permDesc"></p>
