@@ -1,127 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="See the world through your dog's eyes. Dog Vision uses your camera to simulate how dogs perceive colors - blue and yellow with no red or green." />
-  <title data-i18n="html.title">Dog Vision - See How Dogs See the World | Real-time Color Simulator</title>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Dog Vision",
-  "description": "Real-time camera simulation of how dogs perceive colors. See the world through dichromatic dog vision.",
-  "applicationCategory": "EducationalApplication",
-  "operatingSystem": "Any"
-}
+<meta name="robots" content="noindex" />
+<title>Dog Vision</title>
+<script>
+(function() {
+  var lang = (navigator.language || 'de').split('-')[0];
+  var supported = { de: true, en: true };
+  window.location.replace('/' + (supported[lang] ? lang : 'de') + '/');
+})();
 </script>
-<link rel="stylesheet" href="style.css">
-<script src="i18n.js"></script>
 </head>
 <body>
-<header>
-  <h1 data-i18n="html.heading">Dog Vision</h1>
-</header>
-<select id="langSwitcher" onchange="switchLang(this.value)">
-  <option value="en">English</option>
-  <option value="de">Deutsch</option>
-</select>
-
-<main>
-  <div class="app-area">
-    <div class="container">
-      <div class="panel">
-        <span class="panel-label" data-i18n="html.humanView">Human view</span>
-        <canvas id="canvasHuman"></canvas>
-      </div>
-      <div class="panel">
-        <span class="panel-label" id="animalLabel" data-i18n="html.dogView">Dog view</span>
-        <canvas id="canvasAnimal"></canvas>
-      </div>
-    </div>
-
-    <div id="controls">
-      <button id="btnCapture" disabled>
-        <span class="paw">🐾</span>
-      </button>
-    </div>
-
-    <div id="launchOverlay">
-      <div id="launchDialog">
-        <span class="paw-large">🐾</span>
-        <h2 data-i18n="html.launchHeading">Dog Vision</h2>
-        <button id="btnLaunch" data-i18n="html.launchButton">Start Camera</button>
-      </div>
-    </div>
-  </div>
-
-  <article>
-    <h2 data-i18n="html.article.heading">How dogs see color differently from humans</h2>
-    <p data-i18n="html.article.p1">Humans have trichromatic vision — our eyes contain three types of cone cells sensitive to red, green, and blue light. This allows us to perceive the full spectrum of colors.</p>
-    <p data-i18n="html.article.p2">Dogs have <strong>dichromatic vision</strong>. They have only two types of cone cells: one sensitive to blue and one sensitive to yellow. This means dogs cannot distinguish between red and green — both colors appear as shades of yellow or gray to them.</p>
-    <p data-i18n="html.article.p3">This is similar to <strong>red-green color blindness</strong> in humans. While dogs see fewer colors, they have superior night vision and better motion detection, which made them excellent hunters.</p>
-    <p data-i18n="html.article.p4">Use the camera above to see a real-time simulation of how your dog perceives the world.</p>
-  </article>
-</main>
-
-<div id="permOverlay" class="hidden">
-  <div id="permDialog">
-    <h2 id="permTitle">Camera permission needed</h2>
-    <p id="permDesc"></p>
-    <p id="permRequesting" class="hidden">Requesting camera…</p>
-    <div id="permError"></div>
-    <button id="btnGrant">Continue</button>
-  </div>
-</div>
-
-<div id="captureOverlay" class="hidden">
-  <div id="captureDialog">
-    <h2 data-i18n="html.capturedImage">Captured Image</h2>
-    <div id="capturePreview"></div>
-    <div id="captureActions">
-      <button id="btnShare" aria-label="Share" data-i18n-aria="html.ariaShare">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="18" cy="5" r="3"/>
-          <circle cx="6" cy="12" r="3"/>
-          <circle cx="18" cy="19" r="3"/>
-          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-        </svg>
-        <span data-i18n="html.share">Share</span>
-      </button>
-      <button id="btnDownload" aria-label="Download" data-i18n-aria="html.ariaDownload">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
-        </svg>
-        <span data-i18n="html.save">Save</span>
-      </button>
-      <button id="btnDiscard" aria-label="Discard" data-i18n-aria="html.ariaDiscard">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-        <span data-i18n="html.discard">Discard</span>
-      </button>
-    </div>
-  </div>
-</div>
-
-<div id="fullscreenOverlay" class="hidden">
-  <img id="fullscreenImg" alt="Fullscreen preview" data-i18n-aria="html.fullscreenAlt">
-</div>
-
-<video id="video" autoplay playsinline muted></video>
-
-<script src="index.js"></script>
-<footer>
-  <p data-i18n="html.footer">Dog Vision — educational demonstration of canine color perception.</p>
-  <p>
-    <a href="impressum.html" class="footer-link" data-i18n="html.footerImpressum">Imprint</a>
-    <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="datenschutz.html" class="footer-link" data-i18n="html.footerPrivacy">Privacy Policy</a>
-  </p>
-</footer>
+<p><a href="/de/">Deutsch</a> | <a href="/en/">English</a></p>
 </body>
 </html>

@@ -1,6 +1,6 @@
 (function () {
-  var FALLBACK = 'en';
-  var SUPPORTED = ['en', 'de'];
+  var FALLBACK = 'de';
+  var SUPPORTED = ['de', 'en'];
   var STORAGE_KEY = 'dog-vision-lang';
 
   var translations = {};
@@ -23,15 +23,14 @@
   window.t = t;
 
   (async function init() {
-    var lang = localStorage.getItem(STORAGE_KEY);
-    if (!lang) lang = (navigator.language || '').split('-')[0];
-    if (!lang || SUPPORTED.indexOf(lang) === -1) lang = FALLBACK;
+    var lang = detectLang();
 
     try {
-      var res = await fetch('locales/' + lang + '.json');
+      var url = resolveLocaleURL(lang);
+      var res = await fetch(url);
       translations = await res.json();
     } catch (e) {
-      var res = await fetch('locales/en.json');
+      var res = await fetch(resolveLocaleURL('en'));
       translations = await res.json();
       lang = 'en';
     }
@@ -67,8 +66,31 @@
     _resolve();
   })();
 
+  function detectLang() {
+    var m = window.location.pathname.match(/^\/(de|en)\//);
+    if (m) return m[1];
+    var lang = localStorage.getItem(STORAGE_KEY);
+    if (lang) return lang;
+    lang = (navigator.language || '').split('-')[0];
+    return SUPPORTED.indexOf(lang) !== -1 ? lang : FALLBACK;
+  }
+
+  function resolveLocaleURL(lang) {
+    var scriptEl = document.querySelector('script[src*="i18n.js"]');
+    if (scriptEl) {
+      var base = scriptEl.src.substring(0, scriptEl.src.lastIndexOf('/') + 1);
+      return base + 'locales/' + lang + '.json';
+    }
+    return 'locales/' + lang + '.json';
+  }
+
   window.switchLang = function (lang) {
-    localStorage.setItem(STORAGE_KEY, lang);
-    location.reload();
+    var m = window.location.pathname.match(/^\/(de|en)\//);
+    if (m) {
+      window.location.href = window.location.pathname.replace(/^\/(de|en)\//, '/' + lang + '/');
+    } else {
+      localStorage.setItem(STORAGE_KEY, lang);
+      location.reload();
+    }
   };
 })();
