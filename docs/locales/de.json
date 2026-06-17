@@ -1,8 +1,8 @@
 {
   "html": {
-    "title": "Dog Vision - Sehen Sie die Welt durch die Augen Ihres Hundes | Echtzeit-Farbsimulator",
-    "description": "Sehen Sie die Welt durch die Augen Ihres Hundes. Dog Vision nutzt Ihre Kamera, um zu simulieren, wie Hunde Farben wahrnehmen - Blau und Gelb ohne Rot oder Grün.",
-    "heading": "Dog Vision",
+    "title": "Wie sehen Hunde die Welt? Farben, Sichtfeld und interaktive Simulation",
+    "description": "Sehen Sie die Welt durch die Augen Ihres Hundes. Nutzten sie Ihre Kamera, um zu simulieren, wie Hunde Farben wahrnehmen - Blau und Gelb ohne Rot oder Grün.",
+    "heading": "Wie sehen Hunde die Welt?",
     "humanView": "Menschliche Sicht",
     "dogView": "Hundesicht",
     "article": {
@@ -17,9 +17,9 @@
     "save": "Speichern",
     "discard": "Verwerfen",
     "fullscreenAlt": "Vollbild-Vorschau",
-    "launchHeading": "Dog Vision",
+    "launchHeading": "Wie sehen Hunde die Welt?",
     "launchButton": "Kamera starten",
-    "footer": "Dog Vision — lehrreiche Demonstration des Farbsehens von Hunden.",
+    "footer": "Wie sehen Hunde die Welt? - lehrreiche Demonstration des Farbsehens von Hunden.",
     "footerImpressum": "Impressum",
     "footerPrivacy": "Datenschutz",
     "ariaShare": "Teilen",
