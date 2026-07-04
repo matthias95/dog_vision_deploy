@@ -3,17 +3,124 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="noindex" />
-<title>Dog Vision</title>
-<script>
-(function() {
-  var lang = (navigator.language || 'de').split('-')[0];
-  var supported = { de: true, en: true };
-  window.location.replace('/' + (supported[lang] ? lang : 'de') + '/');
-})();
+<meta name="description" content="Sehen Sie die Welt durch die Augen Ihres Hundes. Nutzten sie Ihre Kamera, um zu simulieren, wie Hunde Farben wahrnehmen - Blau und Gelb ohne Rot oder Grün." />
+<title>Wie sehen Hunde die Welt? Farben, Sichtfeld und interaktive Simulation</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Wie sehen Hunde",
+  "description": "Echtzeit-Kamerasimulation, wie Hunde Farben wahrnehmen. Sehen Sie die Welt durch dichromatisches Hundesehen.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any"
+}
 </script>
+<link rel="icon" type="image/png" href="favicon4.png">
+<link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://www.wie-sehen-hunde.de/" />
+    <link rel="alternate" hreflang="de" href="https://www.wie-sehen-hunde.de/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.wie-sehen-hunde.de/" />
 </head>
 <body>
-<p><a href="/de/">Deutsch</a> | <a href="/en/">English</a></p>
+<header>
+  <h1>Wie sehen Hunde die Welt?</h1>
+</header>
+
+<main>
+  <div class="app-area">
+    <div class="container">
+      <div class="panel">
+        <span class="panel-label">Menschliche Sicht</span>
+        <canvas id="canvasHuman"></canvas>
+      </div>
+      <div class="panel">
+        <span class="panel-label" id="animalLabel">Hundesicht</span>
+        <canvas id="canvasAnimal"></canvas>
+      </div>
+    </div>
+
+    <div id="controls">
+      <button id="btnCapture" disabled>
+        <span class="paw">🐾</span>
+      </button>
+    </div>
+
+    <div id="launchOverlay">
+      <div id="launchDialog">
+        <span class="paw-large">🐾</span>
+        <h2>Wie sehen Hunde die Welt?</h2>
+        <button id="btnLaunch">Kamera starten</button>
+      </div>
+    </div>
+  </div>
+
+  <article>
+    <h2>Wie Hunde Farben anders sehen als Menschen</h2>
+    <p>Menschen haben trichromatisches Sehen — unsere Augen enthalten drei Arten von Zapfenzellen, die empfindlich für rotes, grünes und blaues Licht sind. Dadurch können wir das volle Farbspektrum wahrnehmen.</p>
+    <p>Hunde haben <strong>dichromatisches Sehen</strong>. Sie haben nur zwei Arten von Zapfenzellen: eine für Blau und eine für Gelb. Das bedeutet, dass Hunde nicht zwischen Rot und Grün unterscheiden können — beide Farben erscheinen als Gelb- oder Grautöne.</p>
+    <p>Dies ist vergleichbar mit <strong>Rot-Grün-Blindheit</strong> beim Menschen. Obwohl Hunde weniger Farben sehen, haben sie ein besseres Nachtsichtvermögen und können Bewegungen besser erkennen, was sie zu ausgezeichneten Jägern machte.</p>
+    <p>Nutzen Sie die Kamera oben, um eine Echtzeit-Simulation zu sehen, wie Ihr Hund die Welt wahrnimmt.</p>
+  </article>
+</main>
+
+<div id="permOverlay" class="hidden">
+  <div id="permDialog">
+    <h2 id="permTitle">Camera permission needed</h2>
+    <p id="permDesc"></p>
+    <p id="permRequesting" class="hidden">Requesting camera…</p>
+    <div id="permError"></div>
+    <button id="btnGrant">Continue</button>
+  </div>
+</div>
+
+<div id="captureOverlay" class="hidden">
+  <div id="captureDialog">
+    <h2>Aufgenommenes Bild</h2>
+    <div id="capturePreview"></div>
+    <div id="captureActions">
+      <button id="btnShare" aria-label="Teilen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="5" r="3"/>
+          <circle cx="6" cy="12" r="3"/>
+          <circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        <span>Teilen</span>
+      </button>
+      <button id="btnDownload" aria-label="Herunterladen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Speichern</span>
+      </button>
+      <button id="btnDiscard" aria-label="Verwerfen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+        <span>Verwerfen</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="fullscreenOverlay" class="hidden">
+  <img id="fullscreenImg" alt="Vollbild-Vorschau">
+</div>
+
+<video id="video" autoplay playsinline muted></video>
+
+<script src="index.js"></script>
+<footer>
+  <p>Wie sehen Hunde die Welt? - lehrreiche Demonstration des Farbsehens von Hunden.</p>
+  <p>
+    <a href="impressum.html" class="footer-link">Impressum</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+  </p>
+</footer>
 </body>
 </html>
